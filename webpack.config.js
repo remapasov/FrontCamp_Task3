@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry:  "./src/js/main",
+  entry: ["webpack/hot/dev-server", "webpack-dev-server/client?http://localhost:8080", "./src/js/main"],
   output: {
     filename: "build.js",
   },
@@ -16,7 +16,7 @@ module.exports = {
       loader: "style-loader!css-loader!less-loader"
     },
     {
-      test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+      test:   /\.(png|jpg|svg)$/,
       loader: 'url?name=[path][name].[ext]'
     }
 
@@ -25,7 +25,14 @@ module.exports = {
 
   plugins: [
     new webpack.NoErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
+
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    hot: true
+  }
 
 };
 
