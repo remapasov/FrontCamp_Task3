@@ -6,7 +6,7 @@ module.exports = {
     filename: "build.js",
   },
 
-   module: {
+  module: {
     loaders: [{
       test:   /\.js$/,
       loader: 'babel'
@@ -22,6 +22,8 @@ module.exports = {
 
     ]
   },
+
+  devtool: "source-map",
 
   plugins: [
     new webpack.NoErrorsPlugin(),

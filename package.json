@@ -1,6 +1,8 @@
 {
-  "name": "module-name",
-  "author": "Your Name",
+  "scripts": {
+    "prod": "webpack --config webpack.config.prod.js",
+    "dev": "webpack --config webpack.config.js"
+  },
   "dependencies": {
     "webpack": "*",
     "babel": "*",

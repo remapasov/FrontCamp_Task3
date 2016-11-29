@@ -7,8 +7,6 @@ let url = "https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=
 let addNews = require("./newsProcessing");
 let img = document.createElement("img");
 img.src = ornament;
-img.class = "ornament";
-
 let header = document.getElementsByTagName("header")[0];
 header.appendChild(img);
 
