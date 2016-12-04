@@ -1,1 +1,9 @@
-# FrontCamp_Task3
+# frontCamp_Task3
+
+development mode:
+
+	npm run dev
+
+production mode:
+
+	npm run prod

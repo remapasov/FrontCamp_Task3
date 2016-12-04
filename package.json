@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "prod": "webpack --config webpack.config.prod.js",
+    "dev": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "webpack": "*",
+    "babel": "*",
+    "babel-loader": "*",
+    "babel-core": "*",
+    "babel-preset-es2015": "*",
+    "babel-cli": "^6.0.0",
+    "babel-preset-latest": "*"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "file-loader": "^0.9.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
