@@ -1,6 +1,10 @@
 @background: #EBEFF0;
 @article-border-color: #BAB9B9;
 
+body {
+	position: relative;
+}
+
 .main-layout {
 	background: @background;
 }
@@ -19,6 +23,7 @@ article {
 	margin: 0 0 15px;
 	padding: 20px 30px;
 	border: 1px solid @article-border-color;
+	position: relative;
 }
 
 .author {
@@ -59,4 +64,18 @@ article {
 	width: 550px;
 	height: 40px;
 	margin: 10px 0 0;
+}
+
+.fake-notice {
+	font-size: 120px;
+	color: red;
+}
+
+.fake-notice-block {
+	top: 0;
+	text-align: center;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
 }

@@ -1,9 +1,13 @@
 import ornament from "../img/ornament-t.png";
 
+const fakeMessage = "FAKE!";
+
 module.exports = function addNews(data) {
 	console.log(data);
 	let mainElement = document.getElementsByTagName("main")[0];
 	let ornamentCreator = new OrnamentSingleton();
+	let notice = new Notice(fakeMessage);
+	let noticeMessage = new PositionDecorator(notice).render();
 	data.articles.forEach(el => {
 		let articleBlock = document.createElement("article");
 		let daysAgo = getDateAgo(el.publishedAt);
@@ -16,16 +20,22 @@ module.exports = function addNews(data) {
 			<div class="description">${el.description ? el.description : ''}</div>
 			<div><a href="${el.url}" class="read-more">Read more...</a></div>
 			<div><img class="footer-ornament" src="${ornamentPath}"/></div>
+			<div>${el.author ? "" : noticeMessage}</div>
 		`;
 		mainElement.appendChild(articleBlock);
+		
+		// if (!el.author) {
+		// 	let noticeElement = document.createElement("div");
+		// 	noticeElement.innerHTML = noticeMessage;
+		// 	mainElement.appendChild(noticeElement);
+		// }
 	})
 }
 
 class OrnamentSingleton {
 	constructor() {
-		// getInstance();
-
 	}
+
 	getOrnamentPath() {
 		return ornament;
 	}
@@ -34,6 +44,43 @@ class OrnamentSingleton {
 			OrnamentSingleton.instance = new OrnamentSingleton();
 		}
 		return OrnamentSingleton.instance;
+	}
+}
+
+class VisualComponent {
+	render() {}
+}
+
+class Notice extends VisualComponent {
+	constructor(text) {
+		super();
+		this.text = text;
+	}
+	render() {
+		return `<div class="fake-notice">${this.text}</div>`;
+	}
+}
+
+class Decorator extends VisualComponent {
+	constructor(visualComponent) {
+		super();
+		this.visualComponent = visualComponent;
+	}
+	render() {
+		return this.visualComponent.render();
+	}
+}
+
+class PositionDecorator extends Decorator {
+	constructor(visualComponent) {
+		super(visualComponent);
+	}
+	render() {
+		return `
+			<div class="fake-notice-block" style="position: absolute">
+				${super.render()}
+			</div>
+			`;
 	}
 }
 
